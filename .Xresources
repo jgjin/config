@@ -1,0 +1,4 @@
+#include ".Xresources.d/emacs-options"
+#include ".Xresources.d/rofi-options"
+#include ".Xresources.d/spacemacs-colors"
+#include ".Xresources.d/urxvt-options"

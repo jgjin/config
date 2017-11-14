@@ -1,0 +1,6 @@
+URxvt*font: xft:Source Code Pro:size=24
+URxvt.letterSpace: 0
+URxvt.scrollBar: false
+URxvt*transparent: true
+URxvt*shading: 30
+URxvt*fading: 70
