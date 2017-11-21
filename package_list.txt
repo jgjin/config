@@ -9,6 +9,7 @@ bison
 bspwm
 bzip2
 ccache
+cmatrix
 coreutils
 cryptsetup
 device-mapper
@@ -25,6 +26,7 @@ file
 filesystem
 findutils
 firefox-beta-bin
+flashplugin
 flex
 gawk
 gcc
@@ -74,11 +76,13 @@ pcmanfm
 pcmciautils
 perl
 pkg-config
+poppler-glib
 procps-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
 python
+python-pip
 python2-setuptools
 reiserfsprogs
 rofi
@@ -92,7 +96,10 @@ sysfsutils
 systemd-sysvcompat
 tar
 texinfo
+texlive-core
+the_silver_searcher
 unrar
+upower
 usbutils
 util-linux
 uuid

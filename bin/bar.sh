@@ -17,7 +17,12 @@ battery() {
 
 # Print volume level
 volume() {
-    amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p'
+    amixer get Master | grep 'off' &> /dev/null
+    if [ $? == 0 ]; then
+	echo "Muted"
+    else
+	amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p'
+    fi
 }
 
 # Print CPU load

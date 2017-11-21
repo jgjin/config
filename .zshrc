@@ -21,10 +21,25 @@ bindkey -e
 export GDK_SCALE=2
 export EDITOR='vim'
 export VISUAL='vim'
+export PATH="/home/banana/.cask/bin:$PATH"
+
+# Custom functions
+rec_regex() {
+    ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
+    eval "$2 $ARGS"
+}
+
+update_config() {
+    /usr/bin/ls music > ~/album_list.txt
+    pacman -Qqe > ~/package_list.txt 
+    COMMIT_FILES=$(git diff --name-only HEAD~1 | tr '\n' ' ')
+    eval "git commit $COMMIT_FILES"
+}
 
 # Aliases
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
 alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
+alias kblight="/home/banana/bin/kb-light.py"
 alias lemonbar="~/bin/bar.sh | lemonbar -f \"Source Code Pro-20\" -p &"
 alias lock="xscreensaver-command -lock"
 alias ls="ls --almost-all --classify --color=always"
@@ -35,8 +50,9 @@ alias pacdl="sudo pacman -S"
 alias pacinstall="sudo pacman -U"
 alias paclist="sudo pacman -Qe"
 alias pacrm="sudo pacman -Rs"
-alias pacsearch="sudo pacman -Ss"
+alias pacsearch="pacman -Ss"
 alias play="mplayer -speed 1.40 -af scaletempo -volume"
+alias recregex="rec_regex"
 alias rm="rm -i"
 alias rtime="sudo ntpdate -s time.nist.gov"
 alias rxres="xrdb ~/.Xresources"
