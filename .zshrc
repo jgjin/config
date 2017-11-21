@@ -29,16 +29,23 @@ rec_regex() {
     eval "$2 $ARGS"
 }
 
-update_config() {
-    /usr/bin/ls music > ~/album_list.txt
-    pacman -Qqe > ~/package_list.txt 
+git_commit_diff() {
     COMMIT_FILES=$(git diff --name-only HEAD~1 | tr '\n' ' ')
     eval "git commit $COMMIT_FILES"
+}
+
+update_config() {
+    /usr/bin/ls ~/music > ~/album_list.txt
+    pacman -Qqe > ~/package_list.txt
+    cd ~
+    git_commit_diff
+    cd -
 }
 
 # Aliases
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
 alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
+alias gitcommitdiff="git_commit_diff"
 alias kblight="/home/banana/bin/kb-light.py"
 alias lemonbar="~/bin/bar.sh | lemonbar -f \"Source Code Pro-20\" -p &"
 alias lock="xscreensaver-command -lock"
@@ -57,5 +64,6 @@ alias rm="rm -i"
 alias rtime="sudo ntpdate -s time.nist.gov"
 alias rxres="xrdb ~/.Xresources"
 alias rzsh="source ~/.zshrc"
+alias updateconfig="update_config"
 alias wallpaper="/usr/bin/feh --bg-fill ~/pics/wallpaper.jpg"
 alias ydl="youtube-dl --format bestaudio --output \"~/music/%(playlist)s/%(autonumber)s %(title)s.%(ext)s\""
