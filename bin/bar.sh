@@ -64,7 +64,6 @@ while :; do
     LINE="${LINE}%{F#268bd2}CPU: %{F#d75fd7}$(cpu)% %{F#008787}| "
     LINE="${LINE}%{F#268bd2}NET: %{F#d75fd7}$(network) %{F#008787}| "
     LINE="${LINE}%{F#268bd2}WDW: $(desktops)"
-
     echo $LINE
     sleep 1
 done

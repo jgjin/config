@@ -1,6 +1,5 @@
 acpi
 adobe-source-code-pro-fonts
-alsa-oss
 alsa-utils
 autoconf
 automake
@@ -26,7 +25,6 @@ file
 filesystem
 findutils
 firefox-beta-bin
-flashplugin
 flex
 gawk
 gcc

@@ -1,4 +1,3 @@
-
 # zstyle ':completion:*' completer _list _expand _complete _ignored _match
 # zstyle ':completion:*' completions 1
 # zstyle ':completion:*' glob 1
@@ -21,17 +20,17 @@ bindkey -e
 export GDK_SCALE=2
 export EDITOR='vim'
 export VISUAL='vim'
-export PATH="/home/banana/.cask/bin:$PATH"
+# export PATH="/home/banana/.cask/bin:$PATH"
 
 # Custom functions
-rec_regex() {
-    ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
-    eval "$2 $ARGS"
-}
-
 git_commit_diff() {
     COMMIT_FILES=$(git diff --name-only HEAD~1 | tr '\n' ' ')
     eval "git commit $COMMIT_FILES"
+}
+
+rec_regex() {
+    ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
+    eval "$2 $ARGS"
 }
 
 update_config() {
@@ -44,6 +43,7 @@ update_config() {
 
 # Aliases
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
+alias disconnect="sudo netctl stop-all"
 alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
 alias gitcommitdiff="git_commit_diff"
 alias kblight="/home/banana/bin/kb-light.py"
@@ -55,15 +55,17 @@ alias netcampus="sudo netctl stop-all; sudo netctl start wlp58s0-campus"
 alias nethome="sudo netctl stop-all; sudo netctl start wlp58s0-home"
 alias pacdl="sudo pacman -S"
 alias pacinstall="sudo pacman -U"
-alias paclist="sudo pacman -Qe"
+alias paclist="pacman -Qqe"
 alias pacrm="sudo pacman -Rs"
 alias pacsearch="pacman -Ss"
 alias play="mplayer -speed 1.40 -af scaletempo -volume"
+alias poweroff="systemctl hibernate"
 alias recregex="rec_regex"
 alias rm="rm -i"
 alias rtime="sudo ntpdate -s time.nist.gov"
 alias rxres="xrdb ~/.Xresources"
 alias rzsh="source ~/.zshrc"
+alias tocmdarg="sed 's/ /\\ /g' | tr '\n' ' '"
 alias updateconfig="update_config"
 alias wallpaper="/usr/bin/feh --bg-fill ~/pics/wallpaper.jpg"
 alias ydl="youtube-dl --format bestaudio --output \"~/music/%(playlist)s/%(autonumber)s %(title)s.%(ext)s\""

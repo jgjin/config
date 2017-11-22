@@ -2,4 +2,4 @@
 heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &"
 
 # Make MPlayer volume independent of Master volume
-softvol="yes"
+# softvol="yes"
