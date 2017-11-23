@@ -8,6 +8,7 @@ bison
 bspwm
 bzip2
 ccache
+clipmenu
 cmatrix
 coreutils
 cryptsetup

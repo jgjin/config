@@ -10,6 +10,10 @@ super + @space
 super + Tab
       	rofi -show combi -combi-modi "window,run,ssh" -modi combi
 
+# clipboard manager
+super + c
+        clipmenu
+
 # reload configuration files
 super + Escape
 	pkill -USR1 -x sxhkd

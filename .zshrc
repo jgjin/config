@@ -17,8 +17,9 @@ PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 setopt appendhistory autocd extendedglob
 bindkey -e
 
-export GDK_SCALE=2
+export CM_LAUNCHER='rofi'
 export EDITOR='vim'
+export GDK_SCALE=2
 export VISUAL='vim'
 # export PATH="/home/banana/.cask/bin:$PATH"
 
@@ -53,6 +54,7 @@ alias ls="ls --almost-all --classify --color=always"
 alias makepkg="makepkg -Acs"
 alias netcampus="sudo netctl stop-all; sudo netctl start wlp58s0-campus"
 alias nethome="sudo netctl stop-all; sudo netctl start wlp58s0-home"
+alias nethouse="sudo netctl stop-all; sudo netctl start wlp58s0-house"
 alias pacdl="sudo pacman -S"
 alias pacinstall="sudo pacman -U"
 alias paclist="pacman -Qqe"

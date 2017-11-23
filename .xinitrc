@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Start clipmenu dameon
+clipmenud &
+
 # Start xscreensaver daemon
 xscreensaver &
 
