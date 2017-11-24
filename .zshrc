@@ -1,15 +1,16 @@
-# zstyle ':completion:*' completer _list _expand _complete _ignored _match
-# zstyle ':completion:*' completions 1
-# zstyle ':completion:*' glob 1
-# zstyle ':completion:*' group-name ''
-# zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' completer _expand _complete _ignored _match
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' insert-unambiguous true
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' # 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}'
 zstyle :compinstall filename '/home/banana/.zshrc'
 
 autoload -Uz compinit
 compinit
 
+# Shell variables
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -17,6 +18,7 @@ PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 setopt appendhistory autocd extendedglob
 bindkey -e
 
+# Environment variables
 export CM_LAUNCHER='rofi'
 export EDITOR='vim'
 export GDK_SCALE=2
@@ -44,6 +46,7 @@ update_config() {
 
 # Aliases
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
+alias connect="sudo netctl stop-all; sudo netctl start"
 alias disconnect="sudo netctl stop-all"
 alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
 alias gitcommitdiff="git_commit_diff"
@@ -52,9 +55,6 @@ alias lemonbar="~/bin/bar.sh | lemonbar -f \"Source Code Pro-20\" -p &"
 alias lock="xscreensaver-command -lock"
 alias ls="ls --almost-all --classify --color=always"
 alias makepkg="makepkg -Acs"
-alias netcampus="sudo netctl stop-all; sudo netctl start wlp58s0-campus"
-alias nethome="sudo netctl stop-all; sudo netctl start wlp58s0-home"
-alias nethouse="sudo netctl stop-all; sudo netctl start wlp58s0-house"
 alias pacdl="sudo pacman -S"
 alias pacinstall="sudo pacman -U"
 alias paclist="pacman -Qqe"

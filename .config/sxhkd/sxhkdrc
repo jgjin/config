@@ -6,13 +6,18 @@
 super + @space
 	urxvt
 
+# dropdown terminal
+super + Return
+	DROPDOWN_ID=$(cat /tmp/dropdownid); \
+	bspc node $DROPDOWN_ID --flag hidden; bspc node -f $DROPDOWN_ID
+
 # program launcher
 super + Tab
-      	rofi -show combi -combi-modi "window,run,ssh" -modi combi
+	rofi -show combi -combi-modi "window,run,ssh" -modi combi
 
 # clipboard manager
 super + c
-        clipmenu
+	clipmenu
 
 # reload configuration files
 super + Escape
@@ -20,11 +25,11 @@ super + Escape
 
 # toggle mute/unmute
 super + m
-        amixer set Master toggle
+	amixer set Master toggle
 
 # increase/decrease volume level by 3%
 super + {equal,minus}
-        amixer -q sset Master 3%{+,-}
+	amixer -q sset Master 3%{+,-}
 
 #
 # bspwm key bindings

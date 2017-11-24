@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 # Based on http://blog.z3bra.org/2014/04/meeting-at-the-bar.html
 
