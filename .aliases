@@ -1,3 +1,4 @@
+alias bluetooth="sudo bluetoothctl" # Make sure to add user to lp group
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
 alias connect="sudo netctl stop-all; sudo netctl start"
 alias disconnect="sudo netctl stop-all"

@@ -5,6 +5,8 @@ autoconf
 automake
 bash
 bison
+bluez
+bluez-utils
 bspwm
 bzip2
 ccache
@@ -80,6 +82,7 @@ procps-ng
 psmisc
 pulseaudio
 pulseaudio-alsa
+pulseaudio-bluetooth
 python
 python-pip
 python2-setuptools
