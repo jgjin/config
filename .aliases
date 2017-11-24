@@ -1,3 +1,4 @@
+alias audioinfo="mediainfo"
 alias bluetooth="sudo bluetoothctl" # Make sure to add user to lp group
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
 alias connect="sudo netctl stop-all; sudo netctl start"
@@ -31,7 +32,7 @@ alias rzsh="source ~/.zshrc"
 alias startbluetooth="systemctl start bluetooth.service"
 alias tocmdarg="sed 's/ /\\ /g' | tr '\n' ' '"
 alias updateconfig="update_config"
-# alias v
+alias videoinfo="mediainfo"
 alias wallpaper="/usr/bin/feh --bg-fill ~/pics/wallpaper.jpg"
 # alias x
 alias ydl="youtube-dl --format bestaudio --output \"~/music/%(playlist)s/%(autonumber)s %(title)s.%(ext)s\""

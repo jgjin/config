@@ -61,6 +61,7 @@ make
 man-db
 man-pages
 mdadm
+mediainfo
 mercurial
 mplayer
 nano
