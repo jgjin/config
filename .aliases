@@ -1,0 +1,37 @@
+alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
+alias connect="sudo netctl stop-all; sudo netctl start"
+alias disconnect="sudo netctl stop-all"
+# alias e
+alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
+alias gitcommitdiff="git_commit_diff"
+# alias h
+# alias i
+# alias j
+alias kblight="/home/banana/bin/kb-light.py"
+alias lemonbar="~/bin/bar.sh | lemonbar -f \"Source Code Pro-20\" -p &"
+alias lock="xscreensaver-command -lock"
+alias ls="ls --almost-all --classify --color=always"
+alias makepkg="makepkg -Acs"
+# alias n
+# alias o
+alias pacdl="sudo pacman -S"
+alias pacinstall="sudo pacman -U"
+alias paclist="pacman -Qqe"
+alias pacrm="sudo pacman -Rs"
+alias pacsearch="pacman -Ss"
+alias play="mplayer -speed 1.40 -af scaletempo -volume"
+alias poweroff="systemctl hibernate"
+# alias q
+alias recregex="rec_regex"
+alias rm="rm -i"
+alias rtime="sudo ntpdate -s time.nist.gov"
+alias rxres="xrdb ~/.Xresources"
+alias rzsh="source ~/.zshrc"
+alias startbluetooth="systemctl start bluetooth.service"
+alias tocmdarg="sed 's/ /\\ /g' | tr '\n' ' '"
+alias updateconfig="update_config"
+# alias v
+alias wallpaper="/usr/bin/feh --bg-fill ~/pics/wallpaper.jpg"
+# alias x
+alias ydl="youtube-dl --format bestaudio --output \"~/music/%(playlist)s/%(autonumber)s %(title)s.%(ext)s\""
+# alias z
