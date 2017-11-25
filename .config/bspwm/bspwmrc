@@ -24,10 +24,5 @@ bspc config history_aware_focus   true
 bspc config focus_by_distance     true
 
 # Rules
-# bspc rule -a Gimp desktop='^8' state=floating follow=on
-# bspc rule -a Chromium desktop='^2'
-# bspc rule -a mplayer2 state=floating
-# bspc rule -a Kupfer.py focus=on
-# bspc rule -a Screenkey manage=off
-bspc rule -a dropdown sticky=on state=floating hidden=on
-urxvt -title dropdown -e ~/bin/dropdown.sh &
+bspc rule -a URxvt:dropdown sticky=on state=floating hidden=on
+urxvt +tr -name dropdown -e ~/bin/dropdown.sh &
