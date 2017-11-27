@@ -7,7 +7,7 @@ super + @space
 	urxvt
 
 # dropdown terminal
-super + r
+super + Return
 	DROPDOWN_ID=$(cat /tmp/dropdownid); \
 	bspc node $DROPDOWN_ID --flag hidden; bspc node -f $DROPDOWN_ID
 

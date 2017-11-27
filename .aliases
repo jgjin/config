@@ -1,7 +1,4 @@
 alias audioinfo="mediainfo"
-# https://wiki.archlinux.org/index.php/Bluetooth_headset#Connecting_works.2C_but_there_are_sound_glitches_all_the_time
-# Make sure to add user to lp group
-alias bluetooth="sudo bluetoothctl" 
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
 alias connect="sudo netctl stop-all; sudo netctl start"
 alias disconnect="sudo netctl stop-all"
@@ -31,7 +28,6 @@ alias rm="rm -i"
 alias rtime="sudo ntpdate -s time.nist.gov"
 alias rxres="xrdb ~/.Xresources"
 alias rzsh="source ~/.zshrc"
-alias startbluetooth="systemctl start bluetooth.service"
 # Need to fix
 alias tocmdarg="sed 's/ /\\ /g' | tr '\n' ' '"
 alias updateconfig="update_config"
