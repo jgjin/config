@@ -2,6 +2,11 @@
 
 # Based on http://blog.z3bra.org/2014/04/meeting-at-the-bar.html
 
+# Print mplayer track
+mplayer_track() {
+    basename "$(readlink /proc/$(pidof mplayer)/fd/*)" | head -1 | cut --delimiter=' ' --fields=2- | cut --delimiter='.' --fields=1
+}
+
 # Print date and time
 date_time() {
     date '+%Y-%m-%d %H:%M'
@@ -57,7 +62,11 @@ desktops() {
 
 # Aggregate information from functions above into stdout
 while :; do
-    LINE="%{c}%{B#1c1c1c}"
+    if [[ "$(pidof mplayer)" -eq "" ]]; then
+	LINE="%{c}%{B#1c1c1c}"
+    else
+	LINE="%{l}%{F#268bd2}MUS: %{F#d75fd7}$(mplayer_track)%{c}%{B#1c1c1c}"
+    fi
     LINE="${LINE}%{F#268bd2}CLK: %{F#d75fd7}$(date_time) %{F#008787}| "
     LINE="${LINE}%{F#268bd2}BAT: %{F#d75fd7}$(battery) %{F#008787}| "
     LINE="${LINE}%{F#268bd2}VOL: %{F#d75fd7}$(volume) %{F#008787}| "

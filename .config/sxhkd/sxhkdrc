@@ -31,6 +31,14 @@ super + m
 super + {equal,minus}
 	amixer -q sset Master 3%{+,-}
 
+# pause mplayer
+super + shift + @space
+      echo "pause" > $HOME/.mplayer/cmd-fifo
+
+# switch mplayer track
+super + {shift + q,shift + e}
+      echo "pt_step {-1, 1}" > $HOME/.mplayer/cmd-fifo
+
 #
 # bspwm key bindings
 #
@@ -72,8 +80,8 @@ super + {q, e}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {shift + q,shift + e}
-	bspc desktop -f {first,last}
+# super + {shift + q,shift + e}
+# 	bspc desktop -f {first,last}
 
 # focus older or newer node in history
 super + {o,i}
