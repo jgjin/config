@@ -32,12 +32,17 @@ super + {equal,minus}
 	amixer -q sset Master 3%{+,-}
 
 # pause mplayer
-super + shift + @space
-      echo "pause" > $HOME/.mplayer/cmd-fifo
+super + shift + {space, Escape}
+      echo "{pause, stop}" > $HOME/.mplayer/cmd-fifo
 
 # switch mplayer track
+# http://www.mplayerhq.hu/DOCS/tech/slave.txt
 super + {shift + q,shift + e}
-      echo "pt_step {-1, 1}" > $HOME/.mplayer/cmd-fifo
+      echo "pausing_keep_force pt_step {-1, 1} get_property pause" > $HOME/.mplayer/cmd-fifo
+
+# seek mplayer track
+super + shift + {a,s,w,d}
+      echo "seek {-5,-60,+60,+5}" > $HOME/.mplayer/cmd-fifo
 
 #
 # bspwm key bindings

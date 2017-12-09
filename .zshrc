@@ -30,6 +30,15 @@ export VISUAL='vim'
 # export PATH="/home/banana/.cask/bin:$PATH"
 
 # Custom functions
+# https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
+countdown() {
+    date1=$((`date +%s` + $1)); 
+    while [ "$date1" -ge `date +%s` ]; do 
+	echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+	sleep 0.1
+    done
+}
+
 git_commit_diff() {
     COMMIT_FILES=$(git diff --name-only HEAD~1 | tr '\n' ' ')
     eval "git commit $COMMIT_FILES"
@@ -38,6 +47,14 @@ git_commit_diff() {
 rec_regex() {
     ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
     eval "$2 $ARGS"
+}
+
+stopwatch() {
+    date1=`date +%s`; 
+    while true; do 
+	echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
+	sleep 0.1
+    done
 }
 
 update_config() {

@@ -4,7 +4,7 @@
 
 # Print mplayer track
 mplayer_track() {
-    basename "$(readlink /proc/$(pidof mplayer)/fd/*)" | head -1 | cut --delimiter=' ' --fields=2- | cut --delimiter='.' --fields=1
+    basename "$(readlink /proc/$(pidof mplayer)/fd/*)" | head -1 | cut -d- -f2 | cut -d' ' -f2- | cut -d. -f1
 }
 
 # Print date and time
