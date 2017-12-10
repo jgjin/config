@@ -30,6 +30,21 @@ export GDK_SCALE=2
 export VISUAL='vim'
 export _Z_DATA="$HOME/.dir_history"
 
+# Support history-based cd
+. /usr/share/z/z.sh
+# cd if directory in $PWD, otherwise move to directory based on history
+custom_cd() {
+    if [[ "$#" -eq 0 ]]; then
+    	chdir $HOME
+    else
+	if [[ -d "$1" ]] || [[ "$1" = '-' ]]; then
+	    chdir $1
+	else
+	    z -r $@
+	fi
+    fi
+}
+
 # Custom functions
 # https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
 # Start countdown from $1 seconds
@@ -39,15 +54,6 @@ countdown() {
 	echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
 	sleep 0.1
     done
-}
-
-# cd if directory in $PWD, otherwise move to directory based on history
-custom_cd() {
-    if [[ -d "$1" ]]; then
-	cd $1
-    else
-	z $@
-    fi
 }
 
 # Git commit files with changes
@@ -75,11 +81,10 @@ stopwatch() {
 update_config() {
     /usr/bin/ls ~/music > ~/album_list.txt
     pacman -Qqe > ~/package_list.txt
-    cd ~
+    chdir ~
     git_commit_diff
-    cd -
+    chdir -
 }
 
 # Aliases
-source $HOME/.aliases
-. /usr/share/z/z.sh
+source $HOME/.aliases.sh
