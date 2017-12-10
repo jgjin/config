@@ -67,3 +67,5 @@ update_config() {
 
 # Aliases
 source $HOME/.aliases
+. /usr/share/z/z.sh
+

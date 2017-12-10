@@ -8,6 +8,7 @@ bison
 bspwm
 bzip2
 ccache
+chromium-widevine
 clipmenu
 cmatrix
 coreutils
@@ -121,5 +122,6 @@ xorg-xrandr
 xscreensaver
 xss-lock-git
 youtube-dl
+z
 zip
 zsh
