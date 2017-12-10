@@ -10,7 +10,9 @@
 # alias z
 alias audioinfo="mediainfo"
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
+alias cd="custom_cd"
 alias connect="sudo netctl stop-all; sudo netctl start"
+alias custom-cd="custom_cd"
 alias disconnect="sudo netctl stop-all"
 alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
 alias gitcommitdiff="git_commit_diff"

@@ -26,11 +26,13 @@ export CM_LAUNCHER='rofi'
 export EDITOR='vim'
 export GDK_SCALE=2
 # export LS_COLORS
-export VISUAL='vim'
 # export PATH="/home/banana/.cask/bin:$PATH"
+export VISUAL='vim'
+export _Z_DATA="$HOME/.dir_history"
 
 # Custom functions
 # https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
+# Start countdown from $1 seconds
 countdown() {
     date1=$((`date +%s` + $1)); 
     while [ "$date1" -ge `date +%s` ]; do 
@@ -39,16 +41,28 @@ countdown() {
     done
 }
 
+# cd if directory in $PWD, otherwise move to directory based on history
+custom_cd() {
+    if [[ -d "$1" ]]; then
+	cd $1
+    else
+	z $@
+    fi
+}
+
+# Git commit files with changes
 git_commit_diff() {
     COMMIT_FILES=$(git diff --name-only HEAD~1 | tr '\n' ' ')
     eval "git commit $COMMIT_FILES"
 }
 
+# Perform command $2 on arguments matching regex $1
 rec_regex() {
     ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
     eval "$2 $ARGS"
 }
 
+# Start stopwatch with hours, minutes, and seconds
 stopwatch() {
     date1=`date +%s`; 
     while true; do 
@@ -57,6 +71,7 @@ stopwatch() {
     done
 }
 
+# Update essential configuration at $HOME
 update_config() {
     /usr/bin/ls ~/music > ~/album_list.txt
     pacman -Qqe > ~/package_list.txt
@@ -68,4 +83,3 @@ update_config() {
 # Aliases
 source $HOME/.aliases
 . /usr/share/z/z.sh
-
