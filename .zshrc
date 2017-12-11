@@ -58,7 +58,7 @@ countdown() {
 
 # Git commit files with changes
 git_commit_diff() {
-    COMMIT_FILES=$(git diff --name-only HEAD~1 | tr '\n' ' ')
+    COMMIT_FILES=$(git diff --name-only HEAD | tr '\n' ' ')
     eval "git commit $COMMIT_FILES"
 }
 

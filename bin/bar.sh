@@ -4,7 +4,9 @@
 
 # Print mplayer track
 mplayer_track() {
-    basename "$(readlink /proc/$(pidof mplayer)/fd/*)" | head -1 | cut -d- -f2 | cut -d' ' -f2- | cut -d. -f1
+    basename "$(readlink /proc/$(pidof mplayer)/fd/*)" |
+	head -1 | cut -d- -f2 | cut -d' ' -f2- | cut -d. -f1 |
+	sed -e 's/([^()]*)//g' -e 's/\[[^][]*\]//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
 # Print date and time
@@ -16,7 +18,7 @@ date_time() {
 battery() {
     BATTERY_STATUS=`cat /sys/class/power_supply/BAT0/status`
     BATTERY_CAPACITY=`cat /sys/class/power_supply/BAT0/capacity`
-
+    
     echo $(echo $BATTERY_STATUS | cut -c1)$(printf "%03d" $BATTERY_CAPACITY)"%"
 }
 
