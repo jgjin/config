@@ -81,6 +81,9 @@ stopwatch() {
 update_config() {
     /usr/bin/ls ~/music > ~/album_list.txt
     pacman -Qqe > ~/package_list.txt
+    python -m json.tool ~/.mozilla/firefox/sdqomrpy.default/addons.json |
+	ag "\"name\"" | sed '0~2d' |
+	cut -d\" -f4 > ~/.mozilla/firefox/sdqomrpy.default/addons.txt
     chdir ~
     git_commit_diff
     chdir -
