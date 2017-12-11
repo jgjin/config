@@ -17,28 +17,29 @@ battery() {
     BATTERY_STATUS=`cat /sys/class/power_supply/BAT0/status`
     BATTERY_CAPACITY=`cat /sys/class/power_supply/BAT0/capacity`
 
-    echo $BATTERY_STATUS "at" $BATTERY_CAPACITY"%"
+    echo $(echo $BATTERY_STATUS | cut -c1)$(printf "%03d" $BATTERY_CAPACITY)"%"
 }
 
 # Print volume level
 volume() {
     amixer get Master | grep 'off' &> /dev/null
     if [ $? == 0 ]; then
-	echo "Muted"
+	VOLUME_PREFIX="M"
     else
-	amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p'
+	VOLUME_PREFIX="U"
     fi
+    printf "$VOLUME_PREFIX%03d%%" $(amixer get Master | sed -n 'N;s/^.*\[\([0-9]\+%\).*$/\1/p' | rev | cut -c2- | rev)
 }
 
 # Print CPU load
 cpu() {
     # Load is divided by 4 because laptop has 4 cores
-    ps -eo pcpu | awk 'BEGIN {sum=0.0f} {sum+=$1/4} END {printf "%.2f", sum}'
+    ps -eo pcpu | awk 'BEGIN {sum=0.0f} {sum+=$1/4} END {printf "%03d", sum}'
 }
 
 # Print network connection state
 network() {
-    ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo "Connected" || echo "Disconnected"
+    ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo "C" || echo "D"
 }
 
 # Print desktops
