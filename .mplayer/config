@@ -1,5 +1,6 @@
 # Disable X Screensaver during playback
-heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &"
+# Not working
+# heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &"
 
 # Make MPlayer volume independent of Master volume
 # softvol="yes"

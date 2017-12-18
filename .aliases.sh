@@ -6,16 +6,19 @@
 # alias o
 # alias q
 # alias s
+# alias t
 # alias x
-# alias z
 alias audioinfo="mediainfo"
 alias brightness="sudo tee /sys/class/backlight/intel_backlight/brightness <<<"
 alias cd="custom_cd"
 alias connect="sudo netctl stop-all; sudo netctl start"
+alias count="echo $(find . -maxdepth 1 -type f | wc -l) \"files,\" $(find . -maxdepth 1 -type d | wc -l) \"directories\""
 alias customcd="custom_cd"
 alias disconnect="sudo netctl stop-all"
 alias feh="feh --fullscreen --auto-zoom --image-bg black --quiet"
+alias fehsort="feh --sort mtime"
 alias firefoxprivate="$HOME/bin/firefox-private.sh"
+alias fm="pcmanfm"
 alias gitcommitdiff="git_commit_diff"
 alias gitlist="git ls-tree --full-tree -r HEAD"
 alias kblight="$HOME/bin/kb-light.py"
@@ -38,10 +41,9 @@ alias rm="rm -i"
 alias rtime="sudo ntpdate -s time.nist.gov"
 alias rxres="xrdb $HOME/.Xresources"
 alias rzsh="source $HOME/.zshrc"
-# Need to fix
-alias tocmdarg="sed 's/ /\\ /g' | tr '\n' ' '"
 alias updateconfig="update_config"
 alias videoinfo="mediainfo"
 alias volume="amixer -q sset Master"
 alias wallpaper="/usr/bin/feh --bg-fill $HOME/pics/wallpaper.jpg"
 alias ydl="youtube-dl --format bestaudio --output \"$HOME/music/%(playlist)s/%(autonumber)s %(title)s.%(ext)s\""
+alias zd="z -r"
