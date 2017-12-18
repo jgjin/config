@@ -77,7 +77,6 @@ pciutils
 pcmanfm
 pcmciautils
 perl
-perl-image-exiftool
 pkg-config
 poppler-glib
 procps-ng
