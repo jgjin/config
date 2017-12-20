@@ -115,8 +115,10 @@ xdg-user-dirs
 xdg-utils
 xfsprogs
 xorg-server
+xorg-xfontsel
 xorg-xinit
 xorg-xinput
+xorg-xlsfonts
 xorg-xprop
 xorg-xrandr
 xscreensaver
