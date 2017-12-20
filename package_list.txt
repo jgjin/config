@@ -86,8 +86,10 @@ pulseaudio-alsa
 python
 python-pip
 python2-setuptools
+reflector
 reiserfsprogs
 rofi
+rsync
 rxvt-unicode
 s-nail
 sed
