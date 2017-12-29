@@ -22,7 +22,7 @@ fadeSeconds:	           0:00:03
 fadeTicks:	           20
 captureStderr:	           True
 ignoreUninstalledPrograms: False
-font:		           -adobe-source code pro-medium-r-normal--17-*-*-*-*-*-iso8859-15
+font:		           -medium-r-*-140-*-m-
 dpmsEnabled:	           True
 dpmsQuickOff:	           False
 dpmsStandby:	           0:30:00

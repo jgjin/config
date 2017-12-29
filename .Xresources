@@ -1,4 +1,6 @@
+! #include ".Xresources.d/cursor-options"
 #include ".Xresources.d/emacs-options"
 #include ".Xresources.d/rofi-options"
 #include ".Xresources.d/spacemacs-colors"
 #include ".Xresources.d/urxvt-options"
+! #include ".Xresources.d/xscreensaver-options"

@@ -17,6 +17,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+HISTORY_IGNORE="(cd*|clear|feh*|ls*|exit)"
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 setopt appendhistory autocd extendedglob
 bindkey -e
@@ -46,6 +47,12 @@ custom_cd() {
 }
 
 # Custom functions
+count() {
+    NUM_FILES=`find $PWD -maxdepth 1 -type f | wc -l`
+    NUM_DIRECTORIES=`find $PWD -maxdepth 1 -type d | wc -l`
+    echo $NUM_FILES "files," $NUM_DIRECTORIES "directories"
+}
+
 # https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
 # Start countdown from $1 seconds
 countdown() {
