@@ -17,10 +17,24 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-HISTORY_IGNORE="(cd*|clear|feh*|ls*|exit)"
+HISTORY_IGNORE="(cd*|clear|feh*|gimp*|ls*|exit)"
+HIST_EXPIRE_DUPS_FIRST=1
+HIST_FIND_NO_DUPS=1
+HIST_IGNORE_ALL_DUPS=1
+HIST_IGNORE_DUPS=1
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 setopt appendhistory autocd extendedglob
 bindkey -e
+
+# Ignore duplicates when going back in history 
+# https://github.com/zsh-users/zsh-history-substring-search/issues/19
+if [[ -o HIST_FIND_NO_DUPS ]]; then
+    local -A unique_matches
+    for n in $_history_substring_search_matches; do
+        unique_matches[${history[$n]}]="$n"
+    done
+    _history_substring_search_matches=(${(@no)unique_matches})
+fi
 
 # Environment variables
 export CM_LAUNCHER='rofi'
