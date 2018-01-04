@@ -17,13 +17,9 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-HISTORY_IGNORE="(cd*|clear|feh*|gimp*|ls*|exit)"
-HIST_EXPIRE_DUPS_FIRST=1
-HIST_FIND_NO_DUPS=1
-HIST_IGNORE_ALL_DUPS=1
-HIST_IGNORE_DUPS=1
+HISTORY_IGNORE="(cd*|ls*|clear|view*|gimp*|man *|type *|rzsh|exit)"
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
-setopt appendhistory autocd extendedglob
+setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS
 bindkey -e
 
 # Ignore duplicates when going back in history 
@@ -47,7 +43,7 @@ export _Z_DATA="$HOME/.dir_history"
 
 # Support history-based cd
 . /usr/share/z/z.sh
-# cd if directory in $PWD, otherwise move to directory based on history
+# cd if directory in current directory, otherwise move to directory based on history
 custom_cd() {
     if [[ "$#" -eq 0 ]]; then
     	chdir $HOME
@@ -108,6 +104,20 @@ update_config() {
     chdir ~
     git_commit_diff
     chdir -
+}
+
+# View pictures sorted by name in fullscreen without bar
+view() {
+    xdo lower -a "bar"
+    feh --fullscreen --auto-zoom --image-bg black --quiet $@
+    xdo raise -a "bar"
+}
+
+# View pictures sorted by modification timestamp in fullscreen without bar
+view_sort() {
+    xdo lower -a "bar"
+    feh --fullscreen --auto-zoom --image-bg black --quiet --sort mtime $@
+    xdo raise -a "bar"
 }
 
 # Aliases
