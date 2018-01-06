@@ -101,6 +101,7 @@ systemd-sysvcompat
 tar
 texinfo
 texlive-core
+texlive-latexextra
 the_silver_searcher
 unrar
 unzip
@@ -115,6 +116,7 @@ which
 wpa_supplicant
 xdg-user-dirs
 xdg-utils
+xdo
 xfsprogs
 xorg-server
 xorg-xfontsel

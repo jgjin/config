@@ -4,3 +4,4 @@ Disconnect
 Video Speed Controller
 Vim Vixen
 Tree Style Tab
+LeechBlock NG
