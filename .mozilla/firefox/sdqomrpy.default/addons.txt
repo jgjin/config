@@ -1,7 +1,7 @@
 uBlock Origin
 Film scores for Netflix
 Disconnect
+LeechBlock NG
 Video Speed Controller
 Vim Vixen
 Tree Style Tab
-LeechBlock NG

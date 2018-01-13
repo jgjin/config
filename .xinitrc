@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 # Start clipmenu dameon
 clipmenud &
@@ -19,4 +19,5 @@ xrdb ~/.Xresources
 sxhkd &
 
 # Start window manager
-exec bspwm
+exec bspwm -c $HOME/.config/bspwm/bspwmrc
+

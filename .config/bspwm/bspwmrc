@@ -25,7 +25,7 @@ bspc config focus_by_distance     true
 
 # Rules
 bspc rule -a URxvt:dropdown sticky=on state=floating hidden=on
-urxvt +tr -name dropdown -e ~/bin/dropdown.sh &
+urxvt +tr -name dropdown -e $HOME/bin/dropdown.sh &
 
 # External rules command
-bspc config external_rules_command $HOME/.config/bspwm/external-rules.sh
+# bspc config external_rules_command $HOME/.config/bspwm/external-rules.sh
