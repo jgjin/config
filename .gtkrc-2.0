@@ -1,3 +1,2 @@
-gtk-font-name="Sans 24"
-# gtk-menu=24,24
-# gtk-button=24,24
+include ".gtkrc-2.0.d/general-options"
+include ".gtkrc-2.0.d/gimp-options"
