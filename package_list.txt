@@ -69,16 +69,19 @@ netctl
 networkmanager
 noto-fonts
 ntp
+openconnect
 openssh
 os-prober
 pacman
 parted
+pass
 pciutils
 pcmanfm
 pcmciautils
 perl
 pkg-config
 poppler-glib
+postgresql
 procps-ng
 psmisc
 pulseaudio
@@ -90,6 +93,7 @@ reflector
 reiserfsprogs
 rofi
 rsync
+rustup
 rxvt-unicode
 s-nail
 sed

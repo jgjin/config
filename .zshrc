@@ -120,5 +120,6 @@ view_sort() {
     xdo raise -a "bar"
 }
 
-# Aliases
+# Aliases and other configurations
+source $HOME/.config/postgres/config.sh
 source $HOME/.aliases.sh
