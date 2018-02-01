@@ -31,9 +31,9 @@ super + Escape
 super + m
 	amixer set Master toggle
 
-# increase/decrease volume level by 3%
+# increase/decrease volume level by 2%
 super + {equal,minus}
-	amixer -q sset Master 3%{+,-}
+	amixer -q sset Master 2%{+,-}
 
 # pause mplayer
 super + shift + {space, Escape}

@@ -106,6 +106,7 @@ tar
 texinfo
 texlive-core
 texlive-latexextra
+texlive-pictures
 the_silver_searcher
 unrar
 unzip
