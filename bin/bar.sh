@@ -2,9 +2,9 @@
 
 # Based on http://blog.z3bra.org/2014/04/meeting-at-the-bar.html
 
-# Print mplayer track
-mplayer_track() {
-    basename "$(readlink /proc/$(pidof mplayer)/fd/*)" |
+# Print mpv track
+mpv_track() {
+    echo '{ "command": ["get_property", "filename"] }' | socat - /tmp/mpvsocket | jshon -e data |
 	head -1 | cut -d- -f2 | cut -d' ' -f2- | cut -d. -f1 |
 	sed -e 's/([^()]*)//g' -e 's/\[[^][]*\]//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
@@ -65,10 +65,10 @@ desktops() {
 
 # Aggregate information from functions above into stdout
 while :; do
-    if [[ "$(pidof mplayer)" -eq "" ]]; then
+    if [[ "$(pidof mpv)" -eq "" ]]; then
 	LINE="%{c}%{B#1c1c1c}"
     else
-	LINE="%{l}%{F#268bd2}MUS: %{F#d75fd7}$(mplayer_track)%{c}%{B#1c1c1c}"
+	LINE="%{l}%{F#268bd2}MUS: %{F#d75fd7}$(mpv_track)%{c}%{B#1c1c1c}"
     fi
     LINE="${LINE}%{F#268bd2}CLK: %{F#d75fd7}$(date_time) %{F#008787}| "
     LINE="${LINE}%{F#268bd2}BAT: %{F#d75fd7}$(battery) %{F#008787}| "

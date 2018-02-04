@@ -19,7 +19,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-HISTORY_IGNORE="(cd*|ls*|clear|view*|gimp*|man *|type *|rzsh|exit)"
+HISTORY_IGNORE="(cd*|ls*|clear|view*|gimp*|play*|man *|type *|rzsh|exit)"
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 # PINENTRY_USER_DATA="USE_CURSES=1"
 setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS
@@ -62,15 +62,19 @@ custom_cd() {
 # Custom functions
 connect() {
     sudo netctl stop-all
-    sudo netctl start $@
-    ESTABLISHED=0;
-    while [ $ESTABLISHED -eq 0 ]; do
+    ESTABLISHED=0
+    sudo netctl start $@ && ESTABLISHED=1
+    while [ "$ESTABLISHED" -le 60 ]; do
 	ping -c 1 8.8.8.8 &>/dev/null
 	if [ "$?" -eq 0 ]; then
-            ESTABLISHED=1
+            ESTABLISHED=61
 	fi
+	ESTABLISHED=$(($ESTABLISHED + 1))
+	sleep 0.5
     done
-    gpg --decrypt $HOME/.config/vpn/credentials.gpg | sudo openconnect $VPN
+    if [ "$ESTABLISHED" -eq 62 ]; then
+	gpg --decrypt $HOME/.config/vpn/credentials.gpg | sudo openconnect $VPN
+    fi
 }
 
 count() {
@@ -93,6 +97,12 @@ countdown() {
 git_commit_diff() {
     COMMIT_FILES=$(git diff --name-only HEAD | tr '\n' ' ')
     eval "git commit $COMMIT_FILES"
+}
+
+# Play audio at 1.40x speed
+play() {
+    amixer -q sset Master $1%
+    mpv --speed=1.40 --hwdec=auto --volume=100 --gapless-audio=yes ${@:2} --input-ipc-server=/tmp/mpvsocket
 }
 
 # Perform command $2 on arguments matching regex $1

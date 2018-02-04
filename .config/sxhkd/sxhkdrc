@@ -21,7 +21,7 @@ super + c
 
 # locate pointer
 super + grave
-      ~/bin/locate-pointer
+        ~/bin/locate-pointer
 
 # reload configuration files
 super + Escape
@@ -33,20 +33,21 @@ super + m
 
 # increase/decrease volume level by 2%
 super + {equal,minus}
-	amixer -q sset Master 2%{+,-}
+        amixer -q sset Master 2%{+,-}
 
-# pause mplayer
+# pause or quit mpv
+# https://mpv.io/manual/master/#json-ipc
+# https://mpv.io/manual/master/#properties
 super + shift + {space, Escape}
-      echo "{pause, stop}" > $HOME/.mplayer/cmd-fifo
+        echo '\{ "command": [{"cycle"\, "pause","quit"}] \}' | socat - /tmp/mpvsocket
 
-# switch mplayer track
-# http://www.mplayerhq.hu/DOCS/tech/slave.txt
+# switch mpv track
 super + {shift + q,shift + e}
-      echo "pausing_keep_force pt_step {-1, 1} get_property pause" > $HOME/.mplayer/cmd-fifo
+        echo '\{ "command": ["playlist-{prev,next}", "weak"] \}' | socat - /tmp/mpvsocket
 
-# seek mplayer track
+# seek mpv track
 super + shift + {a,s,w,d}
-      echo "seek {-5,-60,+60,+5}" > $HOME/.mplayer/cmd-fifo
+        echo '\{ "command": ["seek", "{-5,-60,+60,+5}"] \}' | socat - /tmp/mpvsocket
 
 #
 # bspwm key bindings

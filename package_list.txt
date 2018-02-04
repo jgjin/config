@@ -29,6 +29,7 @@ filesystem
 findutils
 firefox-beta-bin
 flex
+fzf
 gawk
 gcc
 gcc-libs
@@ -47,6 +48,7 @@ iproute2
 iputils
 iw
 jfsutils
+jshon
 lemonbar-xft-git
 less
 libao
@@ -63,7 +65,7 @@ man-pages
 mdadm
 mediainfo
 mercurial
-mplayer
+mpv
 nano
 netctl
 networkmanager
@@ -98,6 +100,7 @@ rxvt-unicode
 s-nail
 sed
 shadow
+socat
 sudo
 sxhkd
 sysfsutils
@@ -108,6 +111,7 @@ texlive-core
 texlive-latexextra
 texlive-pictures
 the_silver_searcher
+tldr
 unrar
 unzip
 upower
