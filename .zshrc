@@ -139,12 +139,12 @@ view() {
     xdo raise -a "bar"
 }
 
-# View pictures sorted by modification timestamp in fullscreen without bar
-view_sort() {
-    xdo lower -a "bar"
-    feh --fullscreen --auto-zoom --image-bg black --quiet --sort mtime $@
-    xdo raise -a "bar"
-}
+# # View pictures sorted by modification timestamp in fullscreen without bar
+# view_sort() {
+#     xdo lower -a "bar"
+#     feh --fullscreen --auto-zoom --image-bg black --quiet --sort mtime $@
+#     xdo raise -a "bar"
+# }
 
 # Aliases and other configurations
 source $HOME/.config/postgres/config.sh
