@@ -77,6 +77,25 @@ super + {shift + t,shift + f}
 super + {shift + l,shift + s,shift + p}
 	bspc node -g {locked,sticky,private}
 
+# minimize window
+super + m
+        FOCUSED_DESKTOP=$(bspc query --names --desktops --desktop focused); \
+	FOCUSED_NODE=$(bspc query --nodes --node focused); \
+	bspc query --names --desktops | grep -q "'$FOCUSED_DESKTOP" || bspc monitor --add-desktops \'$FOCUSED_DESKTOP; \
+	bspc node $FOCUSED_NODE --to-desktop \'$FOCUSED_DESKTOP
+
+# restore minimized windows
+super + shift + m
+        FOCUSED_DESKTOP=$(bspc query --names --desktops --desktop focused); \
+	if bspc query --names --desktops | grep -q "'$FOCUSED_DESKTOP"; then \
+	  for NODE in $(bspc query --nodes --desktop \'$FOCUSED_DESKTOP); do \
+	    bspc node $NODE --to-desktop $FOCUSED_DESKTOP; \
+	    bspc node $NODE --focus; \
+	    bspc node --swap biggest; \
+	  done; \
+	  bspc desktop \'$FOCUSED_DESKTOP --remove; \
+	fi
+
 #
 # focus/swap key bindings
 #

@@ -34,6 +34,7 @@ gawk
 gcc
 gcc-libs
 gettext
+gifsicle
 gimp
 git
 glibc
@@ -90,6 +91,7 @@ pulseaudio
 pulseaudio-alsa
 python
 python-pip
+python-virtualenv
 python2-setuptools
 reflector
 reiserfsprogs
@@ -112,6 +114,7 @@ texlive-core
 texlive-latexextra
 texlive-pictures
 the_silver_searcher
+tk
 tldr
 unrar
 unzip
@@ -123,6 +126,7 @@ vi
 vim
 wget
 which
+wireless_tools
 wpa_supplicant
 xdg-user-dirs
 xdg-utils

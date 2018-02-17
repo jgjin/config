@@ -1,46 +1,47 @@
 # XScreenSaver Preferences File
+# Written by xscreensaver-demo 5.37 for banana on Sun Feb 18 23:30:51 2018.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	           0:10:00
-cycle:		           0:01:00
-lock:		           True
-lockTimeout:	           0:00:00
-passwdTimeout:	           0:00:30
-visualID:	           default
-installColormap:           True
-verbose:	           False
-timestamp:	           True
-splash:		           False
-splashDuration:	           0:00:01
-demoCommand:	           xscreensaver-demo
-prefsCommand:	           xscreensaver-demo -prefs
-nice:		           10
-memoryLimit:	           0
-fade:		           True
-unfade:		           True
-fadeSeconds:	           0:00:03
-fadeTicks:	           20
-captureStderr:	           True
-ignoreUninstalledPrograms: False
-font:		           -medium-r-*-140-*-m-
-dpmsEnabled:	           True
-dpmsQuickOff:	           False
-dpmsStandby:	           0:30:00
-dpmsSuspend:	           0:30:00
-dpmsOff:	           0:30:00
-grabDesktopImages:         False
-grabVideoFrames:           False
-chooseRandomImages:        True
-imageDirectory:	           /home/banana/.emacs.d
+timeout:	0:10:00
+cycle:		0:01:00
+lock:		True
+lockTimeout:	0:00:00
+passwdTimeout:	0:00:30
+visualID:	default
+installColormap:    True
+verbose:	False
+timestamp:	True
+splash:		False
+splashDuration:	0:00:01
+demoCommand:	xscreensaver-demo
+prefsCommand:	xscreensaver-demo -prefs
+nice:		10
+memoryLimit:	0
+fade:		True
+unfade:		True
+fadeSeconds:	0:00:03
+fadeTicks:	20
+captureStderr:	True
+ignoreUninstalledPrograms:False
+font:		-medium-r-*-140-*-m-
+dpmsEnabled:	False
+dpmsQuickOff:	False
+dpmsStandby:	0:30:00
+dpmsSuspend:	0:30:00
+dpmsOff:	0:30:00
+grabDesktopImages:  False
+grabVideoFrames:    False
+chooseRandomImages: True
+imageDirectory:	/home/banana/.emacs.d
 
-mode:		           random
-selected:	           -1
+mode:		random
+selected:	-1
 
-textMode:	           file
-textLiteral:	           XScreenSaver
-textFile:	           /home/banana/banana.txt
-textProgram:	           fortune
-textURL:	           https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
+textMode:	file
+textLiteral:	XScreenSaver
+textFile:	/home/banana/banana.txt
+textProgram:	fortune
+textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 
 programs:								      \
 				maze -root				    \n\
@@ -269,12 +270,14 @@ programs:								      \
   GL: 				unicrud -root				    \n\
   GL: 				vigilance -root				    \n\
 
-pointerPollTime:           0:00:05
-pointerHysteresis:         10
-windowCreationTimeout:     0:00:30
-initialDelay:	           0:00:00
-GetViewPortIsFullOfLies:   False
-procInterrupts:	           True
-xinputExtensionDev:        False
-overlayStderr:	           True
-authWarningSlack:          20
+
+pointerPollTime:    0:00:05
+pointerHysteresis:  10
+windowCreationTimeout:0:00:30
+initialDelay:	0:00:00
+GetViewPortIsFullOfLies:False
+procInterrupts:	True
+xinputExtensionDev: False
+overlayStderr:	True
+authWarningSlack:   20
+

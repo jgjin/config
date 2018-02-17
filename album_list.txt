@@ -17,6 +17,7 @@ brockhampton_saturation
 broken-social-scene_hug-of-thunder
 carly-rae-jepsen_emotion
 car-seat-headrest_teens-of-denial
+car-seat-headrest_twin-fantasy
 charli-xcx_pop-2
 charlotte-gainsbourg_rest
 circulatory-system_circulatory-system
@@ -53,14 +54,14 @@ kanye-west_yeezus
 kelela_take-me-apart
 kendrick-lamar_good-kid-m-a-a-d-city
 kendrick-lamar_to-pimp-a-butterfly
-king-krule_the-ooz
 kirin-j-callinan_bravado
 lcd-soundsystem_this-is-happening
 leonard-cohen_you-want-it-darker
-lorde-melodrama
+lorde_melodrama
 loretta-lynn_van-lear-rose
 madeon_adventure
 madvillain_madvillainy
+mgmt_little-dark-age
 miguel_wildheart
 mitski_puberty-2
 modest-mouse_the-moon-and-antarctica
@@ -76,6 +77,7 @@ perfume-genius_no-shape
 perfume-genius_too-bright
 radiohead_a-moon-shaped-pool
 radiohead_ok-computer
+rapsody_lailas-wisdom
 rina-sawayama_rina
 roger-waters_is-this-the-life-we-really-want
 rosalia_los-angeles
@@ -83,6 +85,7 @@ run-the-jewels_run-the-jewels-2
 sampha_process
 sevdaliza_ison
 slowdive_slowdive
+sped-up
 sufjan-stevens_carrie-and-lowell
 sun-kil-moon_benji
 swans_to-be-kind

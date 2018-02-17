@@ -93,6 +93,16 @@ countdown() {
     done
 }
 
+# Execute du sorted by size
+disk_usage() {
+    du -hd1 $@ | sort -h
+}
+
+# Find all files matching argument expression
+findf() {
+    find $@ -type f
+}
+
 # Git commit files with changes
 git_commit_diff() {
     COMMIT_FILES=$(git diff --name-only HEAD | tr '\n' ' ')
@@ -101,14 +111,57 @@ git_commit_diff() {
 
 # Play audio at 1.40x speed
 play() {
-    amixer -q sset Master $1%
-    mpv --speed=1.40 --hwdec=auto --volume=100 --gapless-audio=yes ${@:2} --input-ipc-server=/tmp/mpvsocket
+    if [ "$1" -eq "$1" ] 2>/dev/null; then
+	amixer -q sset Master $1%
+	ARGS=${@:2}
+    else
+	ARGS=$@
+    fi
+    mpv --speed=1.40 --hwdec=auto --gapless-audio=yes --no-audio-display --input-ipc-server=/tmp/mpvsocket $ARGS
 }
 
-# Perform command $2 on arguments matching regex $1
+# Perform command ${@:2} on arguments matching regex $1
 rec_regex() {
+    COMMAND=${@:2}
     ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
-    eval "$2 $ARGS"
+    eval "$COMMAND $ARGS"
+}
+
+# Speed up audio files in $1 by $2 into $3
+speed_up_album() {
+    if [ ! -d "$3" ]; then
+	mkdir -p $3
+    fi
+    for INODE in $1/*; do
+	BASE_NAME=$(basename $INODE)
+	if [ -d "$INODE" ]; then
+	    speed_up_album $INODE $2 $3/$BASE_NAME
+	else
+	    echo $3/$BASE_NAME
+	    BIT_RATE=$(mediainfo $INODE | ag "Overall bit rate\s\s" | cut -d: -f2 | cut -d" " -f2)
+	    if ! sox -G $INODE $3/$BASE_NAME tempo $2 rate -s -h -a 44100 dither -s 2> /dev/null; then
+		ffmpeg -i $INODE -b:a $(($BIT_RATE * 1100)) -filter:a "atempo=$2" -vn $3/$BASE_NAME 2> /dev/null
+	    fi
+	fi
+    done
+}
+
+# Speed up all files in directories in $1 by $2 into $3
+speed_up_albums() {
+    for INODE in $1/*; do
+	if [ ! -d "$INODE" ]; then
+	    echo $INODE "is file, skipping"
+	else
+	    BASE_NAME=$(basename $INODE)
+	    if [ -d "$3/$BASE_NAME" ]; then
+		echo $3/$BASE_NAME "already exists, skipping"
+	    else
+		if [ "$BASE_NAME" != "$3" ]; then
+		    speed_up_album $INODE $2 $3/$BASE_NAME
+		fi
+	    fi
+	fi
+    done
 }
 
 # Start stopwatch with hours, minutes, and seconds
@@ -139,12 +192,11 @@ view() {
     xdo raise -a "bar"
 }
 
-# # View pictures sorted by modification timestamp in fullscreen without bar
-# view_sort() {
-#     xdo lower -a "bar"
-#     feh --fullscreen --auto-zoom --image-bg black --quiet --sort mtime $@
-#     xdo raise -a "bar"
-# }
+# View all pictures in directory
+view_all() {
+    find . -type f > /tmp/img.txt
+    view -f /tmp/img.txt $@
+}
 
 # Aliases and other configurations
 source $HOME/.config/postgres/config.sh
