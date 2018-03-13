@@ -12,6 +12,7 @@ chromium-widevine
 clipmenu
 cmatrix
 coreutils
+cpupower
 cryptsetup
 device-mapper
 dhcpcd

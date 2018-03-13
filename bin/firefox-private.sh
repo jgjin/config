@@ -9,4 +9,4 @@ else
 	bspc rule -a "Firefox Beta" --one-shot desktop=$1
     fi
 fi
-firefox-beta --private-window
+firefox-beta --private-window &

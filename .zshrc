@@ -22,7 +22,7 @@ SAVEHIST=10000
 HISTORY_IGNORE="(cd*|ls*|clear|view*|gimp*|play*|man *|type *|rzsh|exit)"
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 # PINENTRY_USER_DATA="USE_CURSES=1"
-setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS
+setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS NO_BEEP
 bindkey -e
 
 # Ignore duplicates when going back in history 
