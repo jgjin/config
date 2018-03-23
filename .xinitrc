@@ -15,6 +15,9 @@ xss-lock -- /usr/bin/xscreensaver-command -lock &
 # Load config params for X
 xrdb ~/.Xresources
 
+# Try to turn off system beep
+xset b off
+
 # Enable window manager key bindings
 sxhkd &
 

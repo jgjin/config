@@ -49,6 +49,10 @@ super + {shift + q,shift + e}
 super + shift + {a,s,w,d}
         echo '\{ "command": ["seek", "{-5,-60,+60,+5}"] \}' | socat - /tmp/mpvsocket
 
+# Careless whisper
+super + ctrl + alt + s
+        mpv $HOME/tmp/careless_whisper.m4a
+
 #
 # bspwm key bindings
 #

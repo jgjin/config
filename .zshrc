@@ -19,10 +19,10 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-HISTORY_IGNORE="(cd*|ls*|clear|view*|gimp*|play*|man *|type *|rzsh|exit)"
+HISTORY_IGNORE="(cd*|ls*|clear|view*|findimg*|gimp*|play*|man *|type *|rzsh|exit)"
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 # PINENTRY_USER_DATA="USE_CURSES=1"
-setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS NO_BEEP
+setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS # NO_BEEP
 bindkey -e
 
 # Ignore duplicates when going back in history 
@@ -62,19 +62,19 @@ custom_cd() {
 # Custom functions
 connect() {
     sudo netctl stop-all
-    ESTABLISHED=0
-    sudo netctl start $@ && ESTABLISHED=1
-    while [ "$ESTABLISHED" -le 60 ]; do
-	ping -c 1 8.8.8.8 &>/dev/null
-	if [ "$?" -eq 0 ]; then
-            ESTABLISHED=61
-	fi
-	ESTABLISHED=$(($ESTABLISHED + 1))
-	sleep 0.5
-    done
-    if [ "$ESTABLISHED" -eq 62 ]; then
+    echo "Starting profile $1"
+    sudo netctl start $1 || return 2
+    echo "Waiting for profile $1 to go online"
+    sudo netctl wait-online $1
+    echo "Attempting to connect to routable IP"
+    ping -c 1 8.8.8.8 -W 15 # &> /dev/null
+    if [ "$?" -eq 0 ]; then
+	echo "Connecting to VPN"
 	gpg --decrypt $HOME/.config/vpn/credentials.gpg | sudo openconnect $VPN
+	return 0
     fi
+    echo "Could not connect to routable IP, so not connecting to VPN"
+    return 1
 }
 
 count() {
@@ -99,8 +99,8 @@ disk_usage() {
 }
 
 # Find all files matching argument expression
-findf() {
-    find $@ -type f
+find_img() {
+    find $@ -type f > /tmp/img.txt
 }
 
 # Git commit files with changes
@@ -164,6 +164,15 @@ speed_up_albums() {
     done
 }
 
+# SSH into raspberry pi
+ssh_rpi() {
+    if [[ "$#" -eq 0 ]]; then
+	ssh pi@192.168.1.100
+    else
+	ssh pi@$1
+    fi
+}
+
 # Start stopwatch with hours, minutes, and seconds
 stopwatch() {
     date1=`date +%s`; 
@@ -185,6 +194,15 @@ update_config() {
     chdir -
 }
 
+# Update music in Raspberry Pi
+update_music() {
+    if [[ "$#" -eq 0 ]]; then
+	rsync -ru --delete --info=progress2 $HOME/music/sped-up/* pi@192.168.1.100:/mnt/SDCARD/music
+    else
+	rsync -ru --delete --info=progress2 $HOME/music/sped-up/* pi@$1:/mnt/SDCARD/music
+    fi
+}
+
 # View pictures sorted by name in fullscreen without bar
 view() {
     xdo lower -a "bar"
@@ -194,8 +212,8 @@ view() {
 
 # View all pictures in directory
 view_all() {
-    find . -type f > /tmp/img.txt
-    view -f /tmp/img.txt $@
+    findimg .
+    viewf $@
 }
 
 # Aliases and other configurations
