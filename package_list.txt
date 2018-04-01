@@ -98,6 +98,7 @@ reflector
 reiserfsprogs
 rofi
 rsync
+rust-racer
 rustup
 rxvt-unicode
 s-nail

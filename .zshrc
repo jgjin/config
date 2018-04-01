@@ -41,6 +41,7 @@ export EDITOR='vim'
 export GDK_SCALE=2
 # export LS_COLORS
 # export PATH="/home/banana/.cask/bin:$PATH"
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export VISUAL='vim'
 export _Z_DATA="$HOME/.dir_history"
 
@@ -98,9 +99,15 @@ disk_usage() {
     du -hd1 $@ | sort -h
 }
 
-# Find all files matching argument expression
+# Find all images matching argument expression
 find_img() {
     find $@ -type f > /tmp/img.txt
+}
+
+# Find all images matching argument expression and view in sorted order
+find_view_sort() {
+    find_img $@
+    view -f /tmp/img.txt --sort filename &
 }
 
 # Git commit files with changes
@@ -167,7 +174,7 @@ speed_up_albums() {
 # SSH into raspberry pi
 ssh_rpi() {
     if [[ "$#" -eq 0 ]]; then
-	ssh pi@192.168.1.100
+	ssh pi@192.168.1.104
     else
 	ssh pi@$1
     fi
@@ -197,9 +204,9 @@ update_config() {
 # Update music in Raspberry Pi
 update_music() {
     if [[ "$#" -eq 0 ]]; then
-	rsync -ru --delete --info=progress2 $HOME/music/sped-up/* pi@192.168.1.100:/mnt/SDCARD/music
+	rsync -avhru --delete --info=progress2 $HOME/music/sped-up pi@192.168.1.104:/mnt/SDCARD
     else
-	rsync -ru --delete --info=progress2 $HOME/music/sped-up/* pi@$1:/mnt/SDCARD/music
+	rsync -avhru --delete --info=progress2 $HOME/music/sped-up pi@$1:/mnt/SDCARD
     fi
 }
 
