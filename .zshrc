@@ -19,7 +19,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-HISTORY_IGNORE="(cd*|ls*|clear|view*|findimg*|gimp*|play*|man *|type *|rzsh|exit)"
+HISTORY_IGNORE="(cd*|ls*|clear|view*|findimg*|findviewsort*|gimp*|play*|man *|type *|rzsh|exit)"
 PROMPT='%F{068}%n%f%F{029}@%f%F{134}%m%f %F{029}%~%f %F{068}%#%f '
 # PINENTRY_USER_DATA="USE_CURSES=1"
 setopt appendhistory autocd extendedglob HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS # NO_BEEP
@@ -39,8 +39,11 @@ fi
 export CM_LAUNCHER='rofi'
 export EDITOR='vim'
 export GDK_SCALE=2
+export LD_LIBRARY_PATH="/usr/local/lib/"
 # export LS_COLORS
 # export PATH="/home/banana/.cask/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export VISUAL='vim'
 export _Z_DATA="$HOME/.dir_history"
@@ -67,6 +70,7 @@ connect() {
     sudo netctl start $1 || return 2
     echo "Waiting for profile $1 to go online"
     sudo netctl wait-online $1
+    sleep 2
     echo "Attempting to connect to routable IP"
     ping -c 1 8.8.8.8 -W 15 # &> /dev/null
     if [ "$?" -eq 0 ]; then
@@ -169,14 +173,16 @@ speed_up_albums() {
 	    fi
 	fi
     done
+    echo "Filtered diff results:"
+    diff $1 $3 | ag "Common subdirectories|Only in $1: $3" --invert-match
 }
 
 # SSH into raspberry pi
 ssh_rpi() {
     if [[ "$#" -eq 0 ]]; then
-	ssh pi@192.168.1.104
+	ssh volumio@192.168.211.1
     else
-	ssh pi@$1
+	ssh volumio@$1
     fi
 }
 
@@ -204,9 +210,9 @@ update_config() {
 # Update music in Raspberry Pi
 update_music() {
     if [[ "$#" -eq 0 ]]; then
-	rsync -avhru --delete --info=progress2 $HOME/music/sped-up pi@192.168.1.104:/mnt/SDCARD
+	rsync -avhru --delete --info=progress2 $HOME/music/sped-up volumio@192.168.211.1:/mnt/INTERNAL
     else
-	rsync -avhru --delete --info=progress2 $HOME/music/sped-up pi@$1:/mnt/SDCARD
+	rsync -avhru --delete --info=progress2 $HOME/music/sped-up volumio@$1:/mnt/INTERNAL
     fi
 }
 
@@ -220,10 +226,11 @@ view() {
 # View all pictures in directory
 view_all() {
     findimg .
-    viewf $@
+    view -f /tmp/img.txt $@
 }
 
 # Aliases and other configurations
 source $HOME/.config/postgres/config.sh
 source $HOME/.config/vpn/config.sh
+source $HOME/.config/zsh/keybindings 
 source $HOME/.aliases.sh

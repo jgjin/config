@@ -106,6 +106,7 @@ sed
 shadow
 socat
 sox
+stubby
 sudo
 sxhkd
 sysfsutils
@@ -118,6 +119,7 @@ texlive-pictures
 the_silver_searcher
 tk
 tldr
+tzupdate
 unrar
 unzip
 upower
@@ -129,6 +131,7 @@ vim
 wget
 which
 wireless_tools
+wireshark-qt
 wpa_supplicant
 xdg-user-dirs
 xdg-utils
