@@ -28,7 +28,7 @@ feh
 file
 filesystem
 findutils
-firefox-beta-bin
+firefox-i18n-zh-cn
 flex
 fzf
 gawk
@@ -83,7 +83,7 @@ pciutils
 pcmanfm
 pcmciautils
 perl
-pkg-config
+pkgconf
 poppler-glib
 postgresql
 procps-ng
@@ -91,7 +91,15 @@ psmisc
 pulseaudio
 pulseaudio-alsa
 python
+python-flask
+python-language-server
+python-mccabe
 python-pip
+python-pycodestyle
+python-pydocstyle
+python-pyflakes
+python-pystemmer
+python-rope
 python-virtualenv
 python2-setuptools
 reflector
@@ -107,6 +115,7 @@ shadow
 socat
 sox
 stubby
+sublime-text
 sudo
 sxhkd
 sysfsutils
@@ -119,6 +128,7 @@ texlive-pictures
 the_silver_searcher
 tk
 tldr
+ttf-roboto
 tzupdate
 unrar
 unzip
@@ -136,6 +146,7 @@ wpa_supplicant
 xdg-user-dirs
 xdg-utils
 xdo
+xf86-video-intel
 xfsprogs
 xorg-server
 xorg-xfontsel
@@ -146,6 +157,7 @@ xorg-xprop
 xorg-xrandr
 xscreensaver
 xss-lock-git
+yapf
 youtube-dl
 z
 zip

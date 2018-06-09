@@ -70,7 +70,7 @@ connect() {
     sudo netctl start $1 || return 2
     echo "Waiting for profile $1 to go online"
     sudo netctl wait-online $1
-    sleep 2
+    # sleep 2
     echo "Attempting to connect to routable IP"
     ping -c 1 8.8.8.8 -W 15 # &> /dev/null
     if [ "$?" -eq 0 ]; then
@@ -174,7 +174,7 @@ speed_up_albums() {
 	fi
     done
     echo "Filtered diff results:"
-    diff $1 $3 | ag "Common subdirectories|Only in $1: $3" --invert-match
+    diff -qr $1 $3 | ag "Only in" | ag "Only in $1: $3" --invert-match
 }
 
 # SSH into raspberry pi
@@ -219,8 +219,10 @@ update_music() {
 # View pictures sorted by name in fullscreen without bar
 view() {
     xdo lower -a "bar"
-    feh --fullscreen --auto-zoom --image-bg black --quiet $@
-    xdo raise -a "bar"
+    feh --fullscreen --auto-zoom --image-bg black --quiet --fontpath /usr/share/fonts/TTF/ --menu-font "Roboto-Regular/24" $@
+    if ! pidof "feh" > /dev/null; then 
+	xdo raise -a "bar"
+    fi
 }
 
 # View all pictures in directory

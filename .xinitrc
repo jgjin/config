@@ -3,6 +3,9 @@
 # Start clipmenu dameon
 clipmenud &
 
+# Load config params for X
+xrdb ~/.Xresources
+
 # Start xscreensaver daemon
 xscreensaver &
 
@@ -11,9 +14,6 @@ xss-lock -- /usr/bin/xscreensaver-command -lock &
 
 # Start emacs daemon
 /usr/bin/emacs --daemon
-
-# Load config params for X
-xrdb ~/.Xresources
 
 # Try to turn off system beep
 xset b off

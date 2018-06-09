@@ -3,4 +3,4 @@
 #include ".Xresources.d/rofi-options"
 #include ".Xresources.d/spacemacs-colors"
 #include ".Xresources.d/urxvt-options"
-! #include ".Xresources.d/xscreensaver-options"
+#include ".Xresources.d/xscreensaver-options"

@@ -9,7 +9,7 @@ anna-von-hausswolff_dead-magic
 arcade-fire_funeral
 arca_mutant
 ariel-pink_dedicated-to-bobby-jameson
-battles_gloss-drop
+beach-house_7
 beach-house_teen-dream
 belle-and-sebastian_the-boy-with-the-arab-strap
 big-krit_4eva-is-a-mighty-long-time
@@ -36,13 +36,14 @@ david-bowie_blackstar
 dayme-arocena_cubafonia
 death-from-above_outrage-is-now
 death-grips_the-money_store
+dj-koze_knock-knock
+dl_iceage_beyondless
 dungen_ta-det-lugnt
 empress-of_me
 fever-ray_fever-ray
 fka-twigs_m3ll155x
 fleet-foxes_helplessness-blues
 four-tet_there-is-love-in-you
-frank-ocean_blonde
 frank-ocean_channel-orange
 girlpool_powerplant-update
 girls_father-son-holy-ghost
@@ -51,6 +52,7 @@ grimes_art-angels
 guerilla-toss_gt-ultra
 hamilton-leithauser-and-rostam_i-had-a-dream-that-you-were-mine
 hop-along_bark-your-head-off-dog
+iceage_new-brigade
 iglooghost_neo-wax-bloom
 interpol_turn-on-the-bright-lights
 jack-white_boarding-house-ranch
@@ -63,6 +65,7 @@ japanese-breakfast_soft-sounds-from-another-planet
 jay-som_everybody-works
 jean-grae-x-quelle-chris_everything-s-fine
 jeff-rosenstock_post
+jon-hopkins_singularity
 joy-division_unknown-pleasures
 jpegmafia_veteran
 julia-holter_have-you-in-my-wilderness
@@ -83,7 +86,6 @@ loretta-lynn_van-lear-rose
 madeon_adventure
 madvillain_madvillainy
 mgmt_little-dark-age
-michael-kiwanuka_love-and-hate
 miguel_war-and-leisure
 miguel_wildheart
 mitski_puberty-2
@@ -97,12 +99,14 @@ neil-cicierega_mouth-moods
 neon-indian_vega-intl-night-school
 nick-cave-and-the-bad-seeds_skeleton-tree
 nicolas-jaar_space-is-only-noise
-no-age_snares-like-a-haircut
 oh-sees_orc
+parquet-courts_wide-awake
 passion-pit_gossamer
 perfume-genius_no-shape
 perfume-genius_too-bright
+playboi-carti_die-lit
 protomartyr_relatives-in-descent
+pusha-t_daytona
 radiohead_a-moon-shaped-pool
 radiohead_ok-computer
 rapsody_lailas-wisdom
@@ -116,6 +120,7 @@ screaming-females_all-at-once
 sean-price_imperius-rex
 sevdaliza_ison
 shopping_the-official-body
+skee-mask_compro
 sleep_the-sciences
 slowdive_slowdive
 soccer-mommey_clean
