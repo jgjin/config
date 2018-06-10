@@ -120,6 +120,16 @@ git_commit_diff() {
     eval "git commit $COMMIT_FILES"
 }
 
+# Diff $1 commits behind
+git_diff() {
+    git diff HEAD~$1
+}
+
+# Merge $1 commits behind
+git_merge() {
+    git rebase -i HEAD~$1
+}
+
 # Play audio at 1.40x speed
 play() {
     if [ "$1" -eq "$1" ] 2>/dev/null; then

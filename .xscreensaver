@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.37 for banana on Sun Feb 18 23:30:51 2018.
+# Written by xscreensaver-demo 5.39 for banana on Sun Jun 10 21:39:26 2018.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -32,7 +32,7 @@ dpmsOff:	0:30:00
 grabDesktopImages:  False
 grabVideoFrames:    False
 chooseRandomImages: True
-imageDirectory:	/home/banana/.emacs.d
+imageDirectory:	/home/banana/.emacs.d/banana
 
 mode:		random
 selected:	-1
@@ -269,6 +269,11 @@ programs:								      \
   GL: 				splodesic -root				    \n\
   GL: 				unicrud -root				    \n\
   GL: 				vigilance -root				    \n\
+  GL: 				esper -root				    \n\
+  GL: 				crumbler -root				    \n\
+  GL: 				maze3d -root				    \n\
+  GL: 				peepers -root				    \n\
+  GL: 				razzledazzle -root			    \n\
 
 
 pointerPollTime:    0:00:05
