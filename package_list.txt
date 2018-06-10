@@ -29,6 +29,7 @@ file
 filesystem
 findutils
 firefox-i18n-zh-cn
+flashplugin
 flex
 fzf
 gawk
@@ -115,7 +116,6 @@ shadow
 socat
 sox
 stubby
-sublime-text
 sudo
 sxhkd
 sysfsutils
@@ -146,7 +146,6 @@ wpa_supplicant
 xdg-user-dirs
 xdg-utils
 xdo
-xf86-video-intel
 xfsprogs
 xorg-server
 xorg-xfontsel
