@@ -2,8 +2,8 @@ uBlock Origin
 Tree Style Tab
 Disconnect
 Honey
-Chinese Simplified (zh-CN) Language Pack
 Video Speed Controller
+Chinese Simplified (zh-CN) Language Pack
 LeechBlock NG
 Vim Vixen
 Copy All Tab Urls WE

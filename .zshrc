@@ -130,6 +130,19 @@ git_merge() {
     git rebase -i HEAD~$1
 }
 
+# ls into less with args
+ls_less() {
+    ls -Cw $COLUMNS $@ | less -r
+}
+
+# mv album and run speed_up_albums
+move_music() {
+    mv $@
+    cd ~/music
+    speed_up_albums . 1.40 sped-up
+    cd -
+}
+
 # Play audio at 1.40x speed
 play() {
     if [ "$1" -eq "$1" ] 2>/dev/null; then
