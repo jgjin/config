@@ -17,8 +17,8 @@
 	"<C-E>": { "type": "tabs.next", "count": 1 },
 	"f": { "type": "follow.start", "newTab": false, "background": false },
 	"F": { "type": "follow.start", "newTab": true, "background": true },
-	"Q": { "type": "navigate.history.prev" },
-	"E": { "type": "navigate.history.next" },
+	"<C-S-Q>": { "type": "navigate.history.prev" },
+	"<C-S-E>": { "type": "navigate.history.next" },
 	"<S-Esc>": { "type": "addon.toggle.enabled" }
     },
     "search": {

@@ -3,6 +3,7 @@ adobe-source-code-pro-fonts
 alsa-utils
 autoconf
 automake
+autopep8
 bash
 bison
 bspwm
@@ -71,6 +72,7 @@ mpv
 nano
 netctl
 networkmanager
+nmap
 noto-fonts
 ntp
 openconnect

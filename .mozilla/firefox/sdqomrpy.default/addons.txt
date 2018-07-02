@@ -1,10 +1,10 @@
-uBlock Origin
-Tree Style Tab
+Adblock Plus
 Disconnect
+Tree Style Tab
 Honey
 Video Speed Controller
-Chinese Simplified (zh-CN) Language Pack
 LeechBlock NG
 Vim Vixen
+Chinese Simplified (zh-CN) Language Pack
 Copy All Tab Urls WE
 Film scores for Netflix
