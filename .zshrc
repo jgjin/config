@@ -58,7 +58,7 @@ custom_cd() {
 	if [[ -d "$1" ]] || [[ "$1" = '-' ]]; then
 	    chdir $1
 	else
-	    z -r $@
+	    z -r $@ && echo $@ "found using z" || echo $@ "not found under either cd and z"
 	fi
     fi
 }
@@ -143,6 +143,11 @@ move_music() {
     cd -
 }
 
+# Search pacman and print pkgfile suggestion if fails
+pac_search() {
+    pacman -Ss $@ || echo "No package found, maybe use pkgfile?"
+}
+
 # Play audio at 1.40x speed
 play() {
     if [ "$1" -eq "$1" ] 2>/dev/null; then
@@ -222,9 +227,9 @@ stopwatch() {
 update_config() {
     /usr/bin/ls ~/music > ~/album_list.txt
     pacman -Qqe > ~/package_list.txt
+    /usr/bin/ls ~/aur > ~/aur_list.txt 
     python -m json.tool ~/.mozilla/firefox/sdqomrpy.default/addons.json |
-	ag "\"name\"" | sed '0~2d' |
-	cut -d\" -f4 > ~/.mozilla/firefox/sdqomrpy.default/addons.txt
+	ag "\"name\"" | cut -d\" -f4 > ~/.mozilla/firefox/sdqomrpy.default/addons.txt
     chdir ~
     git_commit_diff
     chdir -

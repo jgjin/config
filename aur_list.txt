@@ -1,0 +1,7 @@
+activity-watch-from-releases-zip
+chromium-widevine
+clipmenu
+lemonbar-xft-git
+tzupdate
+xss-lock-git
+z

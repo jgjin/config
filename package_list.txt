@@ -1,4 +1,5 @@
 acpi
+activity-watch
 adobe-source-code-pro-fonts
 alsa-utils
 autoconf
@@ -86,6 +87,7 @@ pcmanfm
 pcmciautils
 perl
 pkgconf
+pkgfile
 poppler-glib
 postgresql
 procps-ng
