@@ -46,7 +46,11 @@ export PATH="$PATH:$HOME/bin"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export VISUAL='vim'
+export WAKATIME_HOME='~/.config/wakatime'
 export _Z_DATA="$HOME/.dir_history"
+
+# Aliases
+source $HOME/.aliases.sh
 
 # Support history-based cd
 . /usr/share/z/z.sh
@@ -130,9 +134,17 @@ git_merge() {
     git rebase -i HEAD~$1
 }
 
-# ls into less with args
-ls_less() {
-    ls -Cw $COLUMNS $@ | less -r
+# ls with default preferred args into less if necessary
+ls_custom() {
+    TPUT_COLS=`tput cols`
+    /bin/ls -C --width $TPUT_COLS $@ > /tmp/ls.txt
+    LS_LINES=`wc -l < /tmp/ls.txt`
+    TPUT_LINES=`tput lines`
+    if [ "$LS_LINES" -gt "$TPUT_LINES" ]; then
+	/bin/ls --almost-all --classify --color=always -C --width $TPUT_COLS $@ | less -r
+    else
+	/bin/ls --almost-all --classify --color=always -C --width $TPUT_COLS $@
+    fi
 }
 
 # mv album and run speed_up_albums
@@ -228,8 +240,6 @@ update_config() {
     /usr/bin/ls ~/music > ~/album_list.txt
     pacman -Qqe > ~/package_list.txt
     /usr/bin/ls ~/aur > ~/aur_list.txt 
-    python -m json.tool ~/.mozilla/firefox/sdqomrpy.default/addons.json |
-	ag "\"name\"" | cut -d\" -f4 > ~/.mozilla/firefox/sdqomrpy.default/addons.txt
     chdir ~
     git_commit_diff
     chdir -
@@ -259,8 +269,7 @@ view_all() {
     view -f /tmp/img.txt $@
 }
 
-# Aliases and other configurations
+# Other configurations
 source $HOME/.config/postgres/config.sh
 source $HOME/.config/vpn/config.sh
 source $HOME/.config/zsh/keybindings 
-source $HOME/.aliases.sh

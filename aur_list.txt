@@ -3,5 +3,6 @@ chromium-widevine
 clipmenu
 lemonbar-xft-git
 tzupdate
+wakatime
 xss-lock-git
 z

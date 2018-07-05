@@ -143,6 +143,7 @@ util-linux
 uuid
 vi
 vim
+wakatime
 wget
 which
 whois
