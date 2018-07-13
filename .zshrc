@@ -1,3 +1,6 @@
+# Try to use scoped vars in funcs
+# Use RescueTime (remove mindthetime and activitywatch) and fix wakatime
+
 # Change and add
 LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=35;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=33:*.jpeg=33:*.gif=33:*.bmp=33:*.pbm=33:*.pgm=33:*.ppm=33:*.tga=33:*.xbm=33:*.xpm=33:*.tif=33:*.tiff=33:*.png=33:*.svg=33:*.svgz=33:*.mng=33:*.pcx=33:*.mov=33:*.mpg=33:*.mpeg=33:*.m2v=33:*.mkv=33:*.webm=33:*.ogm=33:*.mp4=33:*.m4v=33:*.mp4v=33:*.vob=33:*.qt=33:*.nuv=33:*.wmv=33:*.asf=33:*.rm=33:*.rmvb=33:*.flc=33:*.avi=33:*.fli=33:*.flv=33:*.gl=33:*.dl=33:*.xcf=33:*.xwd=33:*.yuv=33:*.cgm=33:*.emf=33:*.ogv=33:*.ogx=33:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*.org=45;36:*.log=30'
 
@@ -16,6 +19,7 @@ autoload -Uz compinit
 compinit
 
 # Shell variables
+CUSTOM_RM_THRESHOLD=5
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -49,23 +53,8 @@ export VISUAL='vim'
 export WAKATIME_HOME='~/.config/wakatime'
 export _Z_DATA="$HOME/.dir_history"
 
-# Aliases
-source $HOME/.aliases.sh
-
 # Support history-based cd
 . /usr/share/z/z.sh
-# cd if directory in current directory, otherwise move to directory based on history
-custom_cd() {
-    if [[ "$#" -eq 0 ]]; then
-    	chdir $HOME
-    else
-	if [[ -d "$1" ]] || [[ "$1" = '-' ]]; then
-	    chdir $1
-	else
-	    z -r $@ && echo $@ "found using z" || echo $@ "not found under either cd and z"
-	fi
-    fi
-}
 
 # Custom functions
 connect() {
@@ -102,6 +91,88 @@ countdown() {
     done
 }
 
+# cd if directory in current directory, otherwise move to directory based on history
+custom_cd() {
+    if [[ "$#" -eq 0 ]]; then
+    	chdir $HOME
+    else
+	if [[ -d "$1" ]] || [[ "$1" = '-' ]]; then
+	    chdir $1
+	else
+	    z -r $@ && echo $@ "found using z" || echo $@ "not found under either cd and z"
+	fi
+    fi
+}
+
+# ls with default preferred args into less if necessary
+custom_ls() {
+    TPUT_COLS=`tput cols`
+    if /bin/ls -C --width $TPUT_COLS $@ > /tmp/ls.txt; then
+	LS_LINES=`wc -l < /tmp/ls.txt`
+	/usr/bin/rm /tmp/ls.txt
+	TPUT_LINES=`tput lines`
+	if [ "$LS_LINES" -gt "$TPUT_LINES" ]; then
+	    /bin/ls --almost-all --classify --color=always -C --width $TPUT_COLS $@ | less -R
+	else
+	    /bin/ls --almost-all --classify --color=always -C --width $TPUT_COLS $@
+	fi
+    fi
+}
+
+# Suggest move_music if in /home/banana/music
+custom_mv() {
+    if [ "$PWD" = '/home/banana/music' ]; then
+	echo "Please use movemusic"
+    else
+	/usr/bin/mv $@
+    fi
+}
+
+# Suggest remove_music if in /home/banana/music and warn if files more than CUSTOM_RM_THRESHOLD
+custom_rm() {
+    if [ "$PWD" = '/home/banana/music' ]; then
+	echo "Please use removemusic"
+    else
+	CUSTOM_RM_NUM=0
+	for arg in "$@"; do
+	    if [ $arg[0,1] != '-' ]; then
+		if [ -d "$arg" ]; then
+		    find $arg -type f | sort > /tmp/custom_rm_$CUSTOM_RM_NUM.txt
+		else
+                    echo $arg > /tmp/custom_rm_$CUSTOM_RM_NUM.txt
+		fi
+		CUSTOM_RM_NUM=$(($CUSTOM_RM_NUM + 1))
+	    fi
+	done
+	if [ "$CUSTOM_RM_NUM" -gt 0 ]; then
+	    cat /tmp/custom_rm_*.txt > /tmp/custom_rm.txt
+	    /usr/bin/rm /tmp/custom_rm_*.txt
+	    CUSTOM_RM_FILES=`wc -l < /tmp/custom_rm.txt`
+	else
+	    CUSTOM_RM_FILES=-1
+	fi
+	if [ "$CUSTOM_RM_FILES" -gt "$CUSTOM_RM_THRESHOLD" ]; then
+	    echo "rm $CUSTOM_RM_FILES files? "
+	    TPUT_LINES=`tput lines`
+	    if [ "$CUSTOM_RM_FILES" -gt "$TPUT_LINES" ]; then
+		cat /tmp/custom_rm.txt | less
+	    else
+		cat /tmp/custom_rm.txt
+	    fi
+	    /usr/bin/rm /tmp/custom_rm.txt
+	    local CUSTOM_RM_RESPONSE
+	    vared CUSTOM_RM_RESPONSE
+	    if [ "$CUSTOM_RM_RESPONSE" = 'y' ]; then
+		/usr/bin/rm $@
+	    else
+		echo "Aborted"
+	    fi
+	else
+	    /usr/bin/rm -i $@
+	fi
+    fi
+}
+
 # Execute du sorted by size
 disk_usage() {
     du -hd1 $@ | sort -h
@@ -110,6 +181,17 @@ disk_usage() {
 # Find all images matching argument expression
 find_img() {
     find $@ -type f > /tmp/img.txt
+}
+
+# Find all images with one or more provided words in name
+find_img_set() {
+    FIND_IMG_SET_NUM=0
+    for word in "$@"; do
+	find -wholename "*$word*" -type f > /tmp/find_img_$FIND_IMG_SET_NUM.txt
+	FIND_IMG_SET_NUM=$(($FIND_IMG_SET_NUM + 1))
+    done
+    cat /tmp/find_img_*.txt > /tmp/img.txt 
+    rm -f /tmp/find_img_*.txt
 }
 
 # Find all images matching argument expression and view in sorted order
@@ -132,19 +214,6 @@ git_diff() {
 # Merge $1 commits behind
 git_merge() {
     git rebase -i HEAD~$1
-}
-
-# ls with default preferred args into less if necessary
-ls_custom() {
-    TPUT_COLS=`tput cols`
-    /bin/ls -C --width $TPUT_COLS $@ > /tmp/ls.txt
-    LS_LINES=`wc -l < /tmp/ls.txt`
-    TPUT_LINES=`tput lines`
-    if [ "$LS_LINES" -gt "$TPUT_LINES" ]; then
-	/bin/ls --almost-all --classify --color=always -C --width $TPUT_COLS $@ | less -r
-    else
-	/bin/ls --almost-all --classify --color=always -C --width $TPUT_COLS $@
-    fi
 }
 
 # mv album and run speed_up_albums
@@ -176,6 +245,16 @@ rec_regex() {
     COMMAND=${@:2}
     ARGS=$(ag --smart-case -g $1 | sed 's/ /\\ /g' | tr '\n' ' ')
     eval "$COMMAND $ARGS"
+}
+
+# rm album and rm sped-up/album
+remove_music() {
+    for album in "$@"; do
+	read -k "rm -rf ~/music{,/sped-up}/$album? " REMOVE_MUSIC_RESPONSE
+	if [[ "$REMOVE_MUSIC_RESPONSE" -eq 'y' ]]; then
+	    rm -rf ~/music{,/sped-up}/$album
+	fi
+    done
 }
 
 # Speed up audio files in $1 by $2 into $3
@@ -263,9 +342,15 @@ view() {
     fi
 }
 
+# View images with one or more provided words in name
+view_set() {
+    find_img_set $@
+    view -f /tmp/img.txt --sort filename
+}
+
 # View all pictures in directory
 view_all() {
-    findimg .
+    find_img .
     view -f /tmp/img.txt $@
 }
 
@@ -273,3 +358,6 @@ view_all() {
 source $HOME/.config/postgres/config.sh
 source $HOME/.config/vpn/config.sh
 source $HOME/.config/zsh/keybindings 
+
+# Aliases
+source $HOME/.aliases.sh

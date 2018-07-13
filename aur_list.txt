@@ -1,8 +1,10 @@
-activity-watch-from-releases-zip
+activity-watch-example
 chromium-widevine
 clipmenu
 lemonbar-xft-git
+rescuetime
 tzupdate
 wakatime
+xprintidle
 xss-lock-git
 z

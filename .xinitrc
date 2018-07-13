@@ -21,8 +21,8 @@ xset b off
 # Start redshift
 pgrep redshift &> /dev/null || redshift &> /dev/null &
 
-# Start activitywatch
-aw-qt &
+# Start RescueTime
+rescuetime &
 
 # Enable window manager key bindings
 sxhkd &

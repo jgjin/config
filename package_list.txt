@@ -1,5 +1,4 @@
 acpi
-activity-watch
 adobe-source-code-pro-fonts
 alsa-utils
 autoconf
@@ -106,9 +105,11 @@ python-pystemmer
 python-rope
 python-virtualenv
 python2-setuptools
+qt4
 redshift
 reflector
 reiserfsprogs
+rescuetime
 rofi
 rsync
 rust-racer
@@ -161,6 +162,7 @@ xorg-xinput
 xorg-xlsfonts
 xorg-xprop
 xorg-xrandr
+xprintidle
 xscreensaver
 xss-lock-git
 yapf
