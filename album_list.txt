@@ -16,6 +16,7 @@ belle-and-sebastian_the-boy-with-the-arab-strap
 beyonce_lemonade
 big-krit_4eva-is-a-mighty-long-time
 big-thief_capacity
+bjork_homogeneic
 bjork_vespertine
 black-thought-and-9th-wonder_streams-of-thought-vol-1
 blood-orange_freetown-sound
@@ -39,6 +40,7 @@ danny-brown_atrocity-exhibition
 david-bowie_blackstar
 david-bowie_the-rise-and-fall-of-ziggy-stardust-and-the-spiders-from-mars
 dayme-arocena_cubafonia
+deafheaven_ordinary-corrupt-human-love
 death-from-above_outrage-is-now
 death-grips_the-money_store
 death-grips_year-of-the-snitch
@@ -51,6 +53,7 @@ fka-twigs_m3ll155x
 fleet-foxes_helplessness-blues
 four-tet_there-is-love-in-you
 frank-ocean_channel-orange
+future_dirty-sprite-2
 ghost_prequelle
 girlpool_powerplant
 glass-animals_how-to-be-a-human-being
@@ -93,6 +96,7 @@ leonard-cohen_you-want-it-darker
 let-s-eat-grandma_i-m-all-ears
 lorde_melodrama
 loretta-lynn_van-lear-rose
+lucy-dacus_historian
 madeon_adventure
 madvillain_madvillainy
 mgmt_little-dark-age
@@ -139,9 +143,11 @@ slowdive_slowdive
 snail-mail_lush
 soccer-mommey_clean
 sophie_oil-of-every-pearl-s-un-insides
+sorority-noise_you-re-not-as-blank-as-you-think
 sped-up
 sufjan-stevens_carrie-and-lowell
 sun-kil-moon_benji
+superchunk_what-a-time-to-be-alive
 swans_to-be-kind
 sza_ctrl
 talking-heads_remain-in-light
@@ -150,6 +156,7 @@ tame-impala_lonerism
 the-avalanches_since-i-left-you
 the-avalanches_wildflower
 the-carters_everything-is-love
+the-courtneys_the-courtneys-ii
 the-dream_love-hate
 the-hold-steady_boys-and-girls-in-america
 the-mountain-goats_goths

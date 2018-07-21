@@ -53,6 +53,10 @@ super + shift + {a,s,w,d}
 super + ctrl + alt + s
         mpv $HOME/tmp/careless_whisper.m4a
 
+# Lock
+super + l
+        xscreensaver-command -lock
+
 #
 # bspwm key bindings
 #

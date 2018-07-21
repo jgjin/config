@@ -220,7 +220,7 @@ git_merge() {
 move_music() {
     mv $@
     cd ~/music
-    speed_up_albums . 1.40 sped-up
+    speed_up_albums ~/music 1.40 ~/music/sped-up
     cd -
 }
 
